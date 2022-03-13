@@ -1,10 +1,9 @@
 import 'package:dukkantek/dukkantek.dart';
-import 'package:dukkantek/screens/login/presenter/login_presenter.dart';
-import 'package:dukkantek/screens/login/presenter/login_validator.dart';
+import 'package:dukkantek/screens/login/login.dart';
 
 DTInputText password(
     TextEditingController controller, FocusNode focus, WidgetRef ref) {
-  final change = ref.read(LoginPresenter.provider.notifier);
+  final change = ref.read(LoginPresenter.provider);
 
   return DTInputText(
       focusNode: focus,
@@ -20,14 +19,9 @@ DTInputText password(
       },
       controller: controller,
       inputType: TextInputType.text,
-      obscure: change.state.obscure,
-      suffix: GestureDetector(
-        onTap: () {
-          change.updateObscure();
-        },
-        child: Icon(
-          change.state.obscure ? Icons.visibility : Icons.visibility_off,
-          color: DTColors.primary,
-        ),
-      ));
+      obscure: change.obscure,
+      suffix: Icon(
+        change.obscure ? Icons.visibility : Icons.visibility_off,
+        color: DTColors.primary,
+      ).onClick(LoginInteractor.onObscureChange(ref)));
 }

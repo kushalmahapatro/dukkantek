@@ -1,10 +1,8 @@
 import 'package:dukkantek/dukkantek.dart';
-import 'package:dukkantek/screens/login/entity/login_response.dart';
-import 'package:dukkantek/screens/login/presenter/login_presenter.dart';
-import 'package:dukkantek/screens/login/route/login_route.dart';
+import 'package:dukkantek/screens/login/login.dart';
 
-Future<String> loginApi(
-    String email, String password, BuildContext context) async {
+Future<String> loginApi(String email, String password, BuildContext context,
+    WidgetRef? splashRef) async {
   String mock = '';
   if (email.toLowerCase() == "km@dukkantek.com" &&
       password.toLowerCase() == "123456") {
@@ -35,7 +33,7 @@ Future<String> loginApi(
               loginResp.response?.email ?? '', loginResp.response?.name ?? "");
 
           Future.delayed(const Duration(milliseconds: 1200), () {
-            LoginRoute.moveToLaunchScreen(context);
+            LoginRoute.moveToLaunchScreen(context, splashRef);
           });
         } else {
           returnResp = loginResp.error?.msg ?? "";

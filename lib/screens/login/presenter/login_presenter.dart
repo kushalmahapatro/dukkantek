@@ -8,21 +8,23 @@ class LoginPresenter {
   LoginPresenter._();
 
   /// provider to control state
-  static final provider = StateNotifierProvider((ref) {
+  static final provider =
+      StateNotifierProvider<Watcher, LoginStateModel>((ref) {
     return Watcher();
   });
 
   /// login button click login for api call
   static void onLogin(String email, String password, BuildContext context,
-      WidgetRef ref) async {
-    String res = await loginApi(email, password, context);
+      WidgetRef ref, WidgetRef? splashRef) async {
+    String res = await loginApi(email, password, context, splashRef);
     ref.read(provider.notifier).loginLoader(false);
     showSnackBar(context, res);
   }
 
   /// google login button click logic for api call
-  static void onGoogleLogin(BuildContext context, WidgetRef ref) async {
-    String res = await googleLoginApi(context);
+  static void onGoogleLogin(
+      BuildContext context, WidgetRef ref, WidgetRef? splashRef) async {
+    String res = await googleLoginApi(context, splashRef);
     ref.read(provider.notifier).googleLoginLoader(false);
     showSnackBar(context, res);
   }
@@ -56,10 +58,10 @@ class Watcher extends StateNotifier<LoginStateModel> {
   }
 
   void loginLoader(bool value) {
-    state = state.copyWith(loginClciked: value);
+    state = state.copyWith(loginClicked: value);
   }
 
   void googleLoginLoader(bool value) {
-    state = state.copyWith(googleLoginClciked: value);
+    state = state.copyWith(googleLoginClicked: value);
   }
 }

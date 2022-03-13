@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "dukkantek.png",
+      "filename" : "256.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "dukkantek-1.png",
+      "filename" : "256-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "dukkantek-2.png",
+      "filename" : "256-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

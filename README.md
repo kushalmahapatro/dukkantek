@@ -51,4 +51,4 @@ This project consists of mainly 3 screens:
 11. Screen recording of the flow
 - [iOS simulator screen recording](https://drive.google.com/file/d/1YBqbaeI6XvZavvNmDV5nvOZz41QJ2heg/view?usp=sharing)
 
-- [Android emulator screen recording](https://www.veed.io/view/c5ada26e-e974-4649-9ec4-f2cc15d293d2?renderId=60543abf-c1fe-480a-b669-89df3b17940a)
+- [Android emulator screen recording](https://drive.google.com/file/d/1i_MGGgV9L5nuIX2wKi5GC1NZ74c63C8-/view?usp=sharing)

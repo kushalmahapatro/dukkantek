@@ -18,7 +18,9 @@ class SplashRoute {
       ),
       backgroundColor: DTColors.white,
       builder: (BuildContext context) {
-        return const LoginView();
+        return LoginView(
+          splashRef: ref,
+        );
       },
       context: ctx,
     ).then(

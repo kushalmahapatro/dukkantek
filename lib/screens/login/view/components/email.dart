@@ -1,6 +1,5 @@
 import 'package:dukkantek/dukkantek.dart';
-import 'package:dukkantek/screens/login/presenter/login_presenter.dart';
-import 'package:dukkantek/screens/login/presenter/login_validator.dart';
+import 'package:dukkantek/screens/login/login.dart';
 
 DTInputText email(
     TextEditingController controller, FocusNode focus, WidgetRef ref) {

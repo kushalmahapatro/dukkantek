@@ -20,6 +20,7 @@ dependencies:
   cuberto_bottom_bar: ^2.0.0
   shared_preferences: ^2.0.7
   flutter_inappwebview: ^5.3.2
+  flutter_keyboard_visibility: ^5.2.0
 
 dev_dependencies:
   flutter_test:
@@ -32,7 +33,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/logo/dukkantek.png"
+  image_path: "assets/logo/dukkantek-n.png"
 
 flutter:
 

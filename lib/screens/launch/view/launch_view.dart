@@ -4,7 +4,9 @@ import 'package:dukkantek/screens/home/view/home_view.dart';
 import 'package:dukkantek/screens/profile/view/profile_view.dart';
 
 class LaunchView extends HookConsumerWidget {
-  const LaunchView({Key? key}) : super(key: key);
+  const LaunchView({this.splashRef, Key? key}) : super(key: key);
+
+  final WidgetRef? splashRef;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

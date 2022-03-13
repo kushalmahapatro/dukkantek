@@ -22,6 +22,7 @@ class ProfileView extends HookConsumerWidget {
         elevation: 0,
         backgroundColor: DTColors.white,
         title: logo(),
+        centerTitle: true,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

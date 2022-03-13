@@ -1,9 +1,9 @@
 import 'package:dukkantek/dukkantek.dart';
-import 'package:dukkantek/screens/login/presenter/login_presenter.dart';
-import 'package:dukkantek/screens/login/route/login_route.dart';
+import 'package:dukkantek/screens/login/login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-Future<String> googleLoginApi(BuildContext context) async {
+Future<String> googleLoginApi(
+    BuildContext context, WidgetRef? splashRef) async {
   /// Google login API call
   GoogleSignIn _googleSignIn = GoogleSignIn(
     scopes: <String>[
@@ -21,7 +21,7 @@ Future<String> googleLoginApi(BuildContext context) async {
           account?.email ?? '', account?.displayName ?? '');
 
       Future.delayed(const Duration(milliseconds: 1200), () {
-        LoginRoute.moveToLaunchScreen(context);
+        LoginRoute.moveToLaunchScreen(context, splashRef);
       });
     } else {
       returnMsg = "Problem occured while trying to login with Google";
