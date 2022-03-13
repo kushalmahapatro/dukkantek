@@ -1,0 +1,12 @@
+{
+    "status": true,
+    "statusCode": "200",
+    "statusMsg": "Login Successfully",
+    "response": {
+            "name": "Kushal Mahapatro",
+            "email": "km@dukkantek.com",
+            "mob": "+971521104369",
+            "loginType" : "normal"
+        },
+    "error": null
+}

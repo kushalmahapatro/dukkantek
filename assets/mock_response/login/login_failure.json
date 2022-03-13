@@ -1,0 +1,9 @@
+{
+    "status": false,
+    "statusCode": "201",
+    "statusMsg": "Login Failed",
+    "response": null,
+    "error": {
+        "msg" : "Invalid Credentials"
+    }
+}

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "214711395443",
+    "project_id": "dukkantek-c215c",
+    "storage_bucket": "dukkantek-c215c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214711395443:android:b65b02d6f6448459ff7606",
+        "android_client_info": {
+          "package_name": "com.app.dukkantek"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214711395443-ju8cnjps5nd0hffs9pibp6sdciesjd84.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.dukkantek",
+            "certificate_hash": "c659688bd1df6fe846b260a707537c315db9a388"
+          }
+        },
+        {
+          "client_id": "214711395443-g63qo7lpb5ns18j7h55o9jddmp00v1e7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiZdOaEZcixDdyd3LueqU_iyE8hU9J4vw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214711395443-g63qo7lpb5ns18j7h55o9jddmp00v1e7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "214711395443-miep11cdv2cevbq6rh52ie950l69s70b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.dukkantek"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
