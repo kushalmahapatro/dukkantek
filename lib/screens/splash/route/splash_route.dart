@@ -11,8 +11,9 @@ class SplashRoute {
       transitionAnimationController: controller,
       elevation: 8,
       isScrollControlled: true,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30.0),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30), topRight: Radius.circular(30)),
       ),
       backgroundColor: DTColors.white,
       builder: (BuildContext context) {
