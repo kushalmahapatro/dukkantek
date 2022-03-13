@@ -46,27 +46,24 @@ class LoginValidator {
   }
 
   /// check for empty email and password and also for error, if none found enable the button
-  static void Function()? effect(
-      TextEditingController email,
-      TextEditingController password,
-      WidgetRef ref,
-      GlobalKey<FormState> formKey) {
+  static void Function()? effect(TextEditingController email,
+      TextEditingController password, WidgetRef ref) {
     email.addListener(() async {
       await Future.delayed(const Duration(milliseconds: 300));
-      bool val = disabled(email, password, formKey);
+      bool val = disabled(email, password);
       ref.read(LoginPresenter.provider.notifier).updateButtonState(val);
     });
     password.addListener(() async {
       await Future.delayed(const Duration(milliseconds: 300));
-      bool val = disabled(email, password, formKey);
+      bool val = disabled(email, password);
       ref.read(LoginPresenter.provider.notifier).updateButtonState(val);
     });
     return null;
   }
 
   /// enable or disable the button
-  static bool disabled(TextEditingController email,
-          TextEditingController password, GlobalKey<FormState> formKey) =>
+  static bool disabled(
+          TextEditingController email, TextEditingController password) =>
       email.text.toString().isEmpty ||
       password.text.toString().isEmpty ||
       _emailError ||
