@@ -8,9 +8,8 @@ class SplashInt {
   static ClickFunction getStartedClick(
       BuildContext ctx, WidgetRef ref, AnimationController controller) {
     return ClickFunction("get started clicked", onClick: () {
-      ref.read(SplashPresenter.provider.notifier).changeState(1);
-
       SplashRoute.showLogin(ctx, ref, controller);
+      ref.read(SplashPresenter.provider.notifier).changeState(1);
     });
   }
 }

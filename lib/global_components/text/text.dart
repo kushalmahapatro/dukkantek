@@ -10,7 +10,7 @@ class DTText extends TextWidgetBuilder<Widget> {
     _text = s;
   }
 
-  late String _text;
+  String _text = '';
   int _maxLines = 0;
   TextStyle _textStyle = bodyMediumStyle(DTColors.primary);
   TextAlign _textAlign = TextAlign.start;

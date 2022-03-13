@@ -6,9 +6,9 @@ import 'package:dukkantek/screens/login/view/components/email.dart';
 import 'package:dukkantek/screens/login/view/components/password.dart';
 
 class LoginView extends HookConsumerWidget {
-  LoginView({Key? key}) : super(key: key);
+  const LoginView({Key? key}) : super(key: key);
 
-  final _formKey = GlobalKey<FormState>();
+  static final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(LoginPresenter.provider);
@@ -41,20 +41,31 @@ class LoginView extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                /// heading
                 "Login to Continue".text.bodyLarge().make(),
                 const SizedBox(height: 20),
+
+                /// email text field
                 email(emailController, emailFocus, ref),
                 const SizedBox(height: 20),
+
+                /// password text field
                 password(passwordController, passwordFocus, ref),
                 const SizedBox(height: 30),
+
+                /// Login button
                 "Login".ctaActive(
                   LoginInteractor.onLoginClick(ref, _formKey, context),
-                  disable: changes.debugState.buttonDisabled,
-                  loading: changes.debugState.loginClciked,
+                  disable: changes.state.buttonDisabled,
+                  loading: changes.state.loginClciked,
                 ),
                 const SizedBox(height: 20),
+
+                /// divider -or
                 'or'.dividerText(),
                 const SizedBox(height: 20),
+
+                /// Google login button
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -66,7 +77,7 @@ class LoginView extends HookConsumerWidget {
                         .make()
                   ],
                 ).ctaSocial(LoginInteractor.onGoogleLoginClick(ref, context),
-                    loading: changes.debugState.googleLoginClciked),
+                    loading: changes.state.googleLoginClciked),
                 // const Spacer()
               ],
             ),

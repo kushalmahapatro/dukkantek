@@ -11,7 +11,7 @@ class SplashView extends HookConsumerWidget {
     final changes = ref.read(SplashPresenter.provider.notifier);
 
     final controller =
-        useAnimationController(duration: const Duration(milliseconds: 700));
+        useAnimationController(duration: const Duration(milliseconds: 500));
 
     return Scaffold(
       backgroundColor: changes.bgColor,
@@ -23,25 +23,36 @@ class SplashView extends HookConsumerWidget {
             Column(
               children: [
                 const SizedBox(height: 30),
+
+                /// top logo
                 logo(changes),
                 const SizedBox(height: 20),
+
+                /// heading
                 'Empowering your business through digital transformation'
                     .text
                     .headline(color: changes.textColor)
                     .center
                     .make(),
                 const SizedBox(height: 10),
+
+                /// caption
                 'A technology partner that improves your business.'
                     .text
                     .bodySmall(color: changes.textColor)
                     .make()
               ],
             ).paddingAll(20),
+
+            /// image and button
             Expanded(
               child: Column(
                 children: [
+                  /// image
                   Expanded(
                       child: DtAssets.logoStore.assetImage(fit: BoxFit.cover)),
+
+                  /// button
                   'Get Started'
                       .ctaActive(
                           SplashInt.getStartedClick(context, ref, controller))

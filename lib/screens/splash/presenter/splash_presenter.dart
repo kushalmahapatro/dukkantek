@@ -2,11 +2,14 @@ import 'package:dukkantek/dukkantek.dart';
 
 class SplashPresenter {
   SplashPresenter._();
+
+  /// provider to control state
   static final provider = StateNotifierProvider((ref) {
     return Watcher();
   });
 }
 
+/// Watcher to check the change in states
 class Watcher extends StateNotifier<int> {
   Watcher() : super(0);
 

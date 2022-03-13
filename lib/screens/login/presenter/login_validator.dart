@@ -7,8 +7,9 @@ class LoginValidator {
   static bool _emailError = true;
   static bool _passwordError = true;
 
+  /// validate entered email
   // ignore: body_might_complete_normally_nullable
-  static String? validateEmail(String value, FocusNode focus, WidgetRef ref) {
+  static String? validateEmail(String value, FocusNode focus) {
     if (value.isNotEmpty) {
       if (value.isValidEmailAddress) {
         _emailError = false;
@@ -25,9 +26,9 @@ class LoginValidator {
     }
   }
 
+  /// validate entered password
   // ignore: body_might_complete_normally_nullable
-  static String? validatePassword(
-      String value, FocusNode focus, WidgetRef ref) {
+  static String? validatePassword(String value, FocusNode focus) {
     if (value.isNotEmpty) {
       if (value.length > 5) {
         _passwordError = false;
@@ -44,6 +45,7 @@ class LoginValidator {
     }
   }
 
+  /// check for empty email and password and also for error, if none found enable the button
   static void Function()? effect(
       TextEditingController email,
       TextEditingController password,
@@ -62,6 +64,7 @@ class LoginValidator {
     return null;
   }
 
+  /// enable or disable the button
   static bool disabled(TextEditingController email,
           TextEditingController password, GlobalKey<FormState> formKey) =>
       email.text.toString().isEmpty ||

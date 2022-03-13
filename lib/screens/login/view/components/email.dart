@@ -14,7 +14,7 @@ DTInputText email(
       }
     },
     validator: (String? value) {
-      return LoginValidator.validateEmail(value ?? '', focus, ref);
+      return LoginValidator.validateEmail(value ?? '', focus);
     },
     controller: controller,
     inputType: TextInputType.emailAddress,

@@ -5,6 +5,7 @@ import 'package:dukkantek/screens/login/presenter/login_validator.dart';
 DTInputText password(
     TextEditingController controller, FocusNode focus, WidgetRef ref) {
   final change = ref.read(LoginPresenter.provider.notifier);
+
   return DTInputText(
       focusNode: focus,
       labelText: "Password",
@@ -15,17 +16,17 @@ DTInputText password(
         }
       },
       validator: (String? value) {
-        return LoginValidator.validatePassword(value ?? '', focus, ref);
+        return LoginValidator.validatePassword(value ?? '', focus);
       },
       controller: controller,
       inputType: TextInputType.text,
-      obscure: change.debugState.obscure,
+      obscure: change.state.obscure,
       suffix: GestureDetector(
         onTap: () {
           change.updateObscure();
         },
         child: Icon(
-          change.debugState.obscure ? Icons.visibility : Icons.visibility_off,
+          change.state.obscure ? Icons.visibility : Icons.visibility_off,
           color: DTColors.primary,
         ),
       ));

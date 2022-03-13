@@ -15,7 +15,7 @@ class LoginInteractor {
         formKey.currentState!.save();
         final model = ref.read(LoginPresenter.provider.notifier);
         LoginPresenter.onLogin(
-            model.debugState.email, model.debugState.password, context, ref);
+            model.state.email, model.state.password, context, ref);
       }
     });
   }

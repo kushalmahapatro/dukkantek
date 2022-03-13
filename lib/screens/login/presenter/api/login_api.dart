@@ -8,8 +8,10 @@ Future<String> loginApi(
   String mock = '';
   if (email.toLowerCase() == "km@dukkantek.com" &&
       password.toLowerCase() == "123456") {
+    /// success API response mock
     mock = "login/login_success.json";
   } else {
+    /// failure API response mock
     mock = "login/login_failure.json";
   }
 
@@ -50,6 +52,5 @@ Future<String> loginApi(
       break;
   }
 
-  await Future.delayed(const Duration(seconds: 2));
   return returnResp;
 }

@@ -4,6 +4,7 @@ import 'package:dukkantek/screens/login/route/login_route.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 Future<String> googleLoginApi(BuildContext context) async {
+  /// Google login API call
   GoogleSignIn _googleSignIn = GoogleSignIn(
     scopes: <String>[
       'email',
