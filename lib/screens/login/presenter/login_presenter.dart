@@ -1,8 +1,8 @@
 import 'package:dukkantek/dukkantek.dart';
+import 'package:dukkantek/screens/login/entity/api_return.dart';
 
 import 'package:dukkantek/screens/login/entity/login_state_model.dart';
-import 'package:dukkantek/screens/login/presenter/api/google_login_api.dart';
-import 'package:dukkantek/screens/login/presenter/api/login_api.dart';
+import 'package:dukkantek/screens/login/login.dart';
 
 class LoginPresenter {
   LoginPresenter._();
@@ -16,17 +16,23 @@ class LoginPresenter {
   /// login button click login for api call
   static void onLogin(String email, String password, BuildContext context,
       WidgetRef ref, WidgetRef? splashRef) async {
-    String res = await loginApi(email, password, context, splashRef);
+    ApiReturn res = await loginApi(email, password, context, splashRef);
     ref.read(provider.notifier).loginLoader(false);
-    showSnackBar(context, res);
+    showSnackBar(context, res.message);
+    if (res.status) {
+      successRoute(res, context, splashRef);
+    }
   }
 
   /// google login button click logic for api call
   static void onGoogleLogin(
       BuildContext context, WidgetRef ref, WidgetRef? splashRef) async {
-    String res = await googleLoginApi(context, splashRef);
+    ApiReturn res = await googleLoginApi(context, splashRef);
     ref.read(provider.notifier).googleLoginLoader(false);
-    showSnackBar(context, res);
+    showSnackBar(context, res.message);
+    if (res.status) {
+      successRoute(res, context, splashRef);
+    }
   }
 
   /// update shared preference with the successful login data , email and name
@@ -34,6 +40,14 @@ class LoginPresenter {
     setUserEmail(email);
     setUserName(name);
     setIsLoggedIn(true);
+  }
+
+  /// login success update and route
+  static void successRoute(
+      ApiReturn res, BuildContext context, WidgetRef? splashRef) {
+    LoginPresenter.setUserPrefs(res.email, res.name);
+
+    LoginRoute.moveToLaunchScreen(context, splashRef);
   }
 }
 

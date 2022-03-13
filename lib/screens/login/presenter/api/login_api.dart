@@ -1,10 +1,11 @@
 import 'package:dukkantek/dukkantek.dart';
+import 'package:dukkantek/screens/login/entity/api_return.dart';
 import 'package:dukkantek/screens/login/login.dart';
 
-Future<String> loginApi(String email, String password, BuildContext context,
-    WidgetRef? splashRef) async {
+Future<ApiReturn> loginApi(String emailId, String password,
+    BuildContext context, WidgetRef? splashRef) async {
   String mock = '';
-  if (email.toLowerCase() == "km@dukkantek.com" &&
+  if (emailId.toLowerCase() == "km@dukkantek.com" &&
       password.toLowerCase() == "123456") {
     /// success API response mock
     mock = "login/login_success.json";
@@ -13,13 +14,16 @@ Future<String> loginApi(String email, String password, BuildContext context,
     mock = "login/login_failure.json";
   }
 
-  String basicAuth = 'Basic ' + base64Encode(utf8.encode('$email:$password'));
+  String basicAuth = 'Basic ' + base64Encode(utf8.encode('$emailId:$password'));
   RestServiceResponse resp = await restService.post(
-      "/login", <String, String>{"email": email},
+      "/login", <String, String>{"email": emailId},
       headers: <String, String>{'authorization': basicAuth},
       mockJsonName: mock);
 
-  String returnResp = '';
+  String returnMsg = "";
+  String name = "";
+  String email = "";
+  bool val = false;
 
   switch (resp.error) {
     case ScreenError.noError:
@@ -27,28 +31,25 @@ Future<String> loginApi(String email, String password, BuildContext context,
         LoginResponse loginResp = LoginResponse.fromJson(resp.response);
         if ((loginResp.status ?? false) &&
             ((loginResp.statusCode ?? "") == "200")) {
-          returnResp = "Welcome ${loginResp.response?.name ?? ''}";
-
-          LoginPresenter.setUserPrefs(
-              loginResp.response?.email ?? '', loginResp.response?.name ?? "");
-
-          Future.delayed(const Duration(milliseconds: 1200), () {
-            LoginRoute.moveToLaunchScreen(context, splashRef);
-          });
+          returnMsg = "Welcome ${loginResp.response?.name ?? ''}";
+          val = true;
+          name = loginResp.response?.name ?? '';
+          email = loginResp.response?.email ?? '';
         } else {
-          returnResp = loginResp.error?.msg ?? "";
+          returnMsg = loginResp.error?.msg ?? "";
         }
       }
       break;
 
     case ScreenError.internet:
-      returnResp = "Internet connectivity issue";
+      returnMsg = "Internet connectivity issue";
       break;
 
     case ScreenError.unknown:
-      returnResp = "Something went wrong";
+      returnMsg = "Something went wrong";
       break;
   }
 
-  return returnResp;
+  await Future.delayed(const Duration(milliseconds: 1200));
+  return ApiReturn(val, returnMsg, name, email);
 }

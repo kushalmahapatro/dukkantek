@@ -1,8 +1,8 @@
 import 'package:dukkantek/dukkantek.dart';
-import 'package:dukkantek/screens/login/login.dart';
+import 'package:dukkantek/screens/login/entity/api_return.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-Future<String> googleLoginApi(
+Future<ApiReturn> googleLoginApi(
     BuildContext context, WidgetRef? splashRef) async {
   /// Google login API call
   GoogleSignIn _googleSignIn = GoogleSignIn(
@@ -13,16 +13,16 @@ Future<String> googleLoginApi(
   );
 
   String returnMsg = "";
+  String name = "";
+  String email = "";
+  bool val = false;
   try {
     GoogleSignInAccount? account = await _googleSignIn.signIn();
     if ((account?.id ?? '').isNotEmpty) {
       returnMsg = "Welcome ${account?.displayName ?? ''}";
-      LoginPresenter.setUserPrefs(
-          account?.email ?? '', account?.displayName ?? '');
-
-      Future.delayed(const Duration(milliseconds: 1200), () {
-        LoginRoute.moveToLaunchScreen(context, splashRef);
-      });
+      val = true;
+      email = account?.email ?? '';
+      name = account?.displayName ?? '';
     } else {
       returnMsg = "Problem occured while trying to login with Google";
     }
@@ -31,5 +31,6 @@ Future<String> googleLoginApi(
     returnMsg = "Problem occured while trying to login with Google";
   }
 
-  return returnMsg;
+  await Future.delayed(const Duration(milliseconds: 1200));
+  return ApiReturn(val, returnMsg, name, email);
 }
