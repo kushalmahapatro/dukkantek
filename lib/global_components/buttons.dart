@@ -7,9 +7,9 @@ class DTButton extends StatefulWidget {
     this.child,
     this.ctaStyle,
     this.click, {
-    Key? key,
     this.loading = false,
     this.animate = true,
+    Key? key,
   }) : super(key: key);
 
   final Widget child;

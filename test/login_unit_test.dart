@@ -9,13 +9,10 @@ import 'package:dukkantek/dukkantek.dart';
 import 'package:dukkantek/screens/login/presenter/presenter.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:dukkantek/main.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 void main() {
   group("Login validation tests", () {
     test("email validation test", () {
-      String? res = LoginValidator.validateEmail("k@k.com", FocusNode()) ?? '';
+      String? res = LoginValidator.validateEmail("k@k.c", FocusNode()) ?? '';
       expect(res, "Please provide a valid email address");
     });
 

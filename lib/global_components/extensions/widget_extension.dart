@@ -41,12 +41,13 @@ extension WidgetExtensions on Widget {
       );
 
   DTButton ctaActive(ClickFunction click,
-      {bool loading = false, bool disable = false}) {
+      {bool loading = false, bool disable = false, Key? key}) {
     return DTButton(
       this,
       disable ? CtaStyle.inactive : CtaStyle.active,
       click,
       loading: loading,
+      key: key,
     );
   }
 

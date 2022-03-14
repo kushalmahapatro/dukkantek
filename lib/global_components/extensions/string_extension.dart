@@ -21,15 +21,13 @@ extension StringExtensions on String {
     return reg.hasMatch(toLowerCase()) && regExp.hasMatch(toLowerCase());
   }
 
-  Widget ctaActive(ClickFunction click,
+  DTButton ctaActive(ClickFunction click,
       {bool overrideLineHeight = true,
       bool loading = false,
-      bool disable = false}) {
-    return _ctaStyle().ctaActive(
-      click,
-      loading: loading,
-      disable: disable,
-    );
+      bool disable = false,
+      Key? key}) {
+    return _ctaStyle()
+        .ctaActive(click, loading: loading, disable: disable, key: key);
   }
 
   Widget dividerText({Color? color}) {

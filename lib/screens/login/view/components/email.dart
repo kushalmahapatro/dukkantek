@@ -4,6 +4,7 @@ import 'package:dukkantek/screens/login/login.dart';
 DTInputText email(
     TextEditingController controller, FocusNode focus, WidgetRef ref) {
   return DTInputText(
+    key: DTkeys.emailField,
     focusNode: focus,
     labelText: "Email",
     hintText: "abc@gmail.com",

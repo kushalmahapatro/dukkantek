@@ -58,11 +58,11 @@ class LoginView extends HookConsumerWidget {
 
                     /// Login button
                     "Login".ctaActive(
-                      LoginInteractor.onLoginClick(
-                          ref, _formKey, context, splashRef),
-                      disable: changes.buttonDisabled,
-                      loading: changes.loginClicked,
-                    ),
+                        LoginInteractor.onLoginClick(
+                            ref, _formKey, context, splashRef),
+                        disable: changes.buttonDisabled,
+                        loading: changes.loginClicked,
+                        key: DTkeys.loginButton),
                     const SizedBox(height: 20),
 
                     /// divider -or

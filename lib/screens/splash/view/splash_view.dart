@@ -55,7 +55,8 @@ class SplashView extends HookConsumerWidget {
                   /// button
                   'Get Started'
                       .ctaActive(
-                          SplashInt.getStartedClick(context, ref, controller))
+                          SplashInt.getStartedClick(context, ref, controller),
+                          key: DTkeys.getStarted)
                       .paddingSymmetric(horizontal: 20, vertical: 20),
                 ],
               ),

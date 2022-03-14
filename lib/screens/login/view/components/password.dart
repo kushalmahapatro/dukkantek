@@ -6,6 +6,7 @@ DTInputText password(
   final change = ref.read(LoginPresenter.provider);
 
   return DTInputText(
+      key: DTkeys.passwordFiled,
       focusNode: focus,
       labelText: "Password",
       hintText: "Enter 6 digits",
@@ -23,5 +24,6 @@ DTInputText password(
       suffix: Icon(
         change.obscure ? Icons.visibility : Icons.visibility_off,
         color: DTColors.primary,
+        key: DTkeys.obscure,
       ).onClick(LoginInteractor.onObscureChange(ref)));
 }
