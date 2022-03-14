@@ -78,4 +78,8 @@ class Watcher extends StateNotifier<LoginStateModel> {
   void googleLoginLoader(bool value) {
     state = state.copyWith(googleLoginClicked: value);
   }
+
+  void reset() {
+    state = LoginStateModel();
+  }
 }
