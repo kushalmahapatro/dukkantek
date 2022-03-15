@@ -15,15 +15,6 @@ class LoginView extends HookConsumerWidget {
     final passwordController = useTextEditingController(text: '');
     final passwordFocus = useFocusNode();
 
-    useEffect(() {
-      LoginValidator.effect(
-        emailController,
-        passwordController,
-        ref,
-      );
-      return null;
-    }, [emailController, passwordController]);
-
     return KeyboardVisibilityBuilder(builder: (context, isKeyboardVisible) {
       return WillPopScope(
         onWillPop: () async {

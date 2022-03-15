@@ -16,7 +16,7 @@ DTInputText password(
         }
       },
       validator: (String? value) {
-        return LoginValidator.validatePassword(value ?? '', focus);
+        return LoginValidator.validatePassword(value ?? '', focus, ref);
       },
       controller: controller,
       inputType: TextInputType.text,

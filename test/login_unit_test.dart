@@ -12,12 +12,14 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group("Login validation tests", () {
     test("email validation test", () {
-      String? res = LoginValidator.validateEmail("k@k.c", FocusNode()) ?? '';
+      String? res =
+          LoginValidator.validateEmail("k@k.c", FocusNode(), null) ?? '';
       expect(res, "Please provide a valid email address");
     });
 
     test("password validation test", () {
-      String? res = LoginValidator.validatePassword("123", FocusNode()) ?? '';
+      String? res =
+          LoginValidator.validatePassword("123", FocusNode(), null) ?? '';
       expect(res, "Please enter 6 digits");
     });
   });

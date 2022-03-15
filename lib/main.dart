@@ -6,12 +6,15 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   prefs.init();
   Future.delayed(const Duration(seconds: 1), () {
-    runApp(const ProviderScope(child: Dukkantek()));
+    bool loggedIn = isLoggedIn;
+    runApp(ProviderScope(child: Dukkantek(isLoggedIn: loggedIn)));
   });
 }
 
 class Dukkantek extends StatelessWidget {
-  const Dukkantek({Key? key}) : super(key: key);
+  const Dukkantek({Key? key, this.isLoggedIn = false}) : super(key: key);
+
+  final bool isLoggedIn;
 
   // This widget is the root of your application.
   @override

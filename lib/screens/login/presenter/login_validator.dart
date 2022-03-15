@@ -7,65 +7,70 @@ class LoginValidator {
   static bool _emailError = true;
   static bool _passwordError = true;
 
+  static String emailString = '';
+  static String passwordString = '';
+
   /// validate entered email
-  // ignore: body_might_complete_normally_nullable
-  static String? validateEmail(String value, FocusNode focus) {
+  static String? validateEmail(String value, FocusNode focus, WidgetRef? ref) {
+    emailString = value;
+    String? returnString;
     if (value.isNotEmpty) {
       if (value.isValidEmailAddress) {
         _emailError = false;
-        return null;
+        returnString = null;
       } else {
         _emailError = true;
-        return "Please provide a valid email address";
+        returnString = "Please provide a valid email address";
       }
     } else {
       if (focus.hasFocus) {
         _emailError = true;
-        return "Please enter a valid value";
+        returnString = "Please enter a valid value";
       }
     }
+    if (ref != null) {
+      Future.delayed(const Duration(milliseconds: 300)).then((value) {
+        bool val = disabledCheck(emailString, passwordString);
+        ref.read(LoginPresenter.provider.notifier).updateButtonState(val);
+      });
+    }
+
+    return returnString;
   }
 
   /// validate entered password
-  // ignore: body_might_complete_normally_nullable
-  static String? validatePassword(String value, FocusNode focus) {
+  static String? validatePassword(
+      String value, FocusNode focus, WidgetRef? ref) {
+    passwordString = value;
+    String? returnString;
+
     if (value.isNotEmpty) {
       if (value.length > 5) {
         _passwordError = false;
-        return null;
+        returnString = null;
       } else {
         _passwordError = true;
-        return "Please enter 6 digits";
+        returnString = "Please enter 6 digits";
       }
     } else {
       if (focus.hasFocus) {
         _passwordError = true;
-        return "Please enter a valid value";
+        returnString = "Please enter a valid value";
       }
     }
-  }
-
-  /// check for empty email and password and also for error, if none found enable the button
-  static void Function()? effect(TextEditingController email,
-      TextEditingController password, WidgetRef ref) {
-    email.addListener(() async {
-      await Future.delayed(const Duration(milliseconds: 300));
-      bool val = disabled(email, password);
-      ref.read(LoginPresenter.provider.notifier).updateButtonState(val);
-    });
-    password.addListener(() async {
-      await Future.delayed(const Duration(milliseconds: 300));
-      bool val = disabled(email, password);
-      ref.read(LoginPresenter.provider.notifier).updateButtonState(val);
-    });
-    return null;
+    if (ref != null) {
+      Future.delayed(const Duration(milliseconds: 300)).then((value) {
+        bool val = disabledCheck(emailString, passwordString);
+        ref.read(LoginPresenter.provider.notifier).updateButtonState(val);
+      });
+    }
+    return returnString;
   }
 
   /// enable or disable the button
-  static bool disabled(
-          TextEditingController email, TextEditingController password) =>
-      email.text.toString().isEmpty ||
-      password.text.toString().isEmpty ||
+  static bool disabledCheck(String email, String password) =>
+      email.toString().isEmpty ||
+      password.toString().isEmpty ||
       _emailError ||
       _passwordError;
 }
