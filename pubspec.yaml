@@ -13,7 +13,7 @@ dependencies:
   connectivity: 3.0.6
   hooks_riverpod: ^1.0.3
   flutter_hooks: 0.18.2+1
-  dio: ^4.0.0
+  dio: ^5.0.3
   fluttertoast: ^8.0.7
   google_sign_in: ^5.2.4
   google_fonts: ^2.3.1
